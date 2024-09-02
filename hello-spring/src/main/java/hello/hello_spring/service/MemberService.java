@@ -8,11 +8,10 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-@Service
 public class MemberService {
   private final MemberRepository memberRepository;
 
-  @Autowired
+
   public MemberService(MemberRepository memberRepository){ // dependency injection, 외부에서 repo 객체 주입
     this.memberRepository = memberRepository;
   }

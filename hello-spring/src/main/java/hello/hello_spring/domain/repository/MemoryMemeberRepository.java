@@ -8,7 +8,7 @@ import java.util.Map;
 import java.util.Optional;
 import org.springframework.stereotype.Repository;
 
-@Repository
+
 public class MemoryMemeberRepository implements MemberRepository{
 
   // 동시성 문제를 고려하지 않고 단순하게 진행
