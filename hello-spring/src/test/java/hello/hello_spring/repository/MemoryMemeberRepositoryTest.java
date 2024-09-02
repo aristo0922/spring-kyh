@@ -6,8 +6,8 @@ import static org.assertj.core.api.Assertions.*; // static
 
 import hello.hello_spring.domain.Member;
 //import org.junit.jupiter.api.Assertions;
+import hello.hello_spring.domain.repository.MemoryMemeberRepository;
 import java.util.List;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
