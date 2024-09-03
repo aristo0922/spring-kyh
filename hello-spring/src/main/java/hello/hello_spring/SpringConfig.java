@@ -1,13 +1,21 @@
 package hello.hello_spring;
 
+import hello.hello_spring.domain.repository.JdbcMemberRepository;
+import hello.hello_spring.domain.repository.JdbcTemplateMemberRepository;
 import hello.hello_spring.domain.repository.MemberRepository;
-import hello.hello_spring.domain.repository.MemoryMemeberRepository;
 import hello.hello_spring.service.MemberService;
+import javax.sql.DataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class Springconfig {
+public class SpringConfig {
+  private final DataSource dataSource;
+
+  public SpringConfig(DataSource dataSource){
+    this.dataSource = dataSource;
+  }
+
   @Bean// 빈으로 등록
   public MemberService memberService(){
     return new MemberService(memberRepository()); // command p : 매개변수 타입 파악
@@ -15,6 +23,8 @@ public class Springconfig {
 
   @Bean
   public MemberRepository memberRepository(){
-    return new MemoryMemeberRepository();
+//    return new JdbcMemberRepository(dataSource);
+//    return new MemoryMemeberRepository();
+    return new JdbcTemplateMemberRepository(dataSource);
   }
 }
