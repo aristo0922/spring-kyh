@@ -7,8 +7,9 @@ import jakarta.persistence.Id;
 
 @Entity
 public class Member {
+
   @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
+  @GeneratedValue(strategy = GenerationType.IDENTITY) // db 가 직접 pk 를 생성해주는 전략
   private Long id;
   private String name;
 
