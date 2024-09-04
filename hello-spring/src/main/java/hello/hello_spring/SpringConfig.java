@@ -13,28 +13,25 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class SpringConfig {
-//  private final DataSource dataSource;
-//  public SpringConfig(DataSource dataSource){
-//    this.dataSource = dataSource;
-//  }
 
-  private EntityManager em;
+  private final MemberRepository memberRepository;
 
-  @Autowired
-  public SpringConfig(EntityManager em){
-    this.em = em;
+  @Autowired // 생략 가능(생성자가 1개)
+  public SpringConfig(MemberRepository memberRepository){
+    this.memberRepository = memberRepository;
   }
+
 
   @Bean// 빈으로 등록
   public MemberService memberService(){
-    return new MemberService(memberRepository()); // command p : 매개변수 타입 파악
+    return new MemberService(memberRepository); // command p : 매개변수 타입 파악
   }
 
-  @Bean
-  public MemberRepository memberRepository(){
+//  @Bean
+//  public MemberRepository memberRepository(){
 //    return new JdbcMemberRepository(dataSource);
 //    return new MemoryMemeberRepository();
 //    return new JdbcTemplateMemberRepository(dataSource);
-    return new JpaMemberRepository(em);
-  }
+//    return new JpaMemberRepository(em);
+//  }
 }
